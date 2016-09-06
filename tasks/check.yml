@@ -1,0 +1,19 @@
+---
+
+# Check var is defined :
+#
+- name: Check mandatory vars
+  debug: msg="Cheking {{ item | mandatory  }} "
+  tags: check
+  with_items:
+    - sv_program_name
+    - sv_user_name
+    - sv_command
+    - sv_umask
+    - sv_autostart
+    - sv_autorestart
+    - sv_stderr_logfile
+    - sv_stdout_logfile
+    - sv_environment
+
+

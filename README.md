@@ -11,6 +11,7 @@ Mandatory vars:
  - sv_program_name: will be used to define your program in supervisor
  - sv_user_name: user executing the task in supervisor
  - sv_command: command to be executed
+ - sv_log_dir: log directory
  
 
 

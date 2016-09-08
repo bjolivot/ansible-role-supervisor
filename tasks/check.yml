@@ -15,5 +15,5 @@
     - sv_stderr_logfile
     - sv_stdout_logfile
     - sv_environment
-
+    - sv_log_dir
 

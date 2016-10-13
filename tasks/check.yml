@@ -2,10 +2,13 @@
 
 # Check var is defined :
 #
-- name: Check mandatory vars
-  debug: msg="Cheking {{ item | mandatory  }} "
-  tags: check
-  with_items:
+
+- debug: var=hostvars[inventory_hostname]
+
+
+- fail: msg="Variable '{{ item }}' is not defined"
+  when: item not in vars
+  with_items: 
     - sv_program_name
     - sv_user_name
     - sv_command
@@ -16,4 +19,3 @@
     - sv_stdout_logfile
     - sv_environment
     - sv_log_dir
-

@@ -3,9 +3,6 @@
 # Check var is defined :
 #
 
-- debug: var=hostvars[inventory_hostname]
-
-
 - fail: msg="Variable '{{ item }}' is not defined"
   when: item not in vars
   with_items: 

@@ -1,11 +1,25 @@
 ---
 - name: install supervisor
-  apt: name=supervisor state=present update_cache="{{ sv_apt_update_cache }}" cache_valid_time="{{ sv_apt_cache_lifetime }}"
+  apt: 
+    name: supervisor
+    state: present
+    update_cache: "{{ sv_apt_update_cache }}" 
+    cache_valid_time: "{{ sv_apt_cache_lifetime }}"
 
 - name: ensure supervisor is started
-  service: name=supervisor state=started
+  service: 
+    name: supervisor 
+    state: started
 
 - name: template supervisor conf file
-  template: src="supervisord.conf.j2" dest="/etc/supervisor/conf.d/{{ sv_program_name }}.conf" owner=root mode=0644
+  template: 
+    src: "supervisord.conf.j2" 
+    dest: "/etc/supervisor/conf.d/{{ sv_program_name }}.conf" 
+    owner: root 
+    mode: 0644
   notify: restart_supervisor
 
+- name: ensure supervisor is started at boot time
+  service: 
+    name: supervisor 
+    enabled: yes
